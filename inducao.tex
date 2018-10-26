@@ -11,6 +11,7 @@
 \usepackage{amsmath} % assumes amsmath package installed
 \usepackage{amssymb}  % assumes amsmath package installed
 \usepackage{xcolor}
+\usepackage{enumerate}
 
 \title{\LARGE \bf
 O Princípio da Indução e suas Aplicações
@@ -18,8 +19,8 @@ O Princípio da Indução e suas Aplicações
 
 \author{João Lucas Azevedo Yamin Rodrigues da Cunha \\
 		Mariana Alencar do Vale \\
-        Vitor Ribeiro Custódio \\
-        Pedro Vitor Valença Mizuno}
+        Pedro Vitor Valença Mizuno \\
+        Vitor Ribeiro Custódio}
 
 \begin{document}
 \maketitle
@@ -39,6 +40,57 @@ Indução é um princípio importante \textcolor{red}{[...]}
 \subsection{Equivalência entre princípios de indução}
 
 \subsection{Correção do algoritmo de ordenação por inserção}
+
+No segundo problema proposto pela atividade, devemos provar a correção do \textit{insertion sort}, um algoritmo de ordenação de listas. A definição do algoritmo é explicitada a seguir:
+
+  \begin{equation}
+  \label{eq:sort}
+      InsertionSort(l) =
+      \begin{cases}
+          l, \hspace{11.2em}			 	      se \enspace l\,=\,[\,]\\
+          Insert(h, InsertionSorte(l'),\enspace se \enspace l\,=\,h\,::\,l'
+      \end{cases}
+  \end{equation}
+  onde Insert é definido como
+  \begin{equation}
+  \label{eq:insert}
+      Insert(x,l) =
+      \begin{cases}
+          x::[\,],\enspace se\enspace l\,=\,[\,] \\
+          x::l,\: \enspace se\enspace l\,=\,h\,::\,l'\enspace e \enspace x\, \leq \, h
+      \end{cases}
+  \end{equation}
+
+Vamos compreender alguns termos desse algoritmo. Sendo \textit{l} uma lista, esta pode ser definida como:
+
+	\begin{equation*}
+		l =
+        \begin{cases}
+        	[\,]\,,\; \text{se a lista for vazia}\\
+            h\: :: \: l',\; \text{onde \textit{h} é o primeiro elemento de \textit{l} e \textit{l'} é o restante da lista} \\
+        \end{cases}
+	\end{equation*}
+
+Precisamos definir também o que significa uma lista estar ordenada, que é, supostamente, o produto final do \textit{insertion sort}. Seja \textit{l}
+uma lista e \textit{E(l)} o conjunto de todos os elementos da lista \textit{l}. Assim,
+\begin{align*}
+	E\,(\,l\,)\;=\; \{\;a_0,\;a_1,\;a_2,\;...\:,\;a_n\;\}\:,\;n\:=\:|\,l\,|\,-1
+\end{align*}
+\\
+Logo, seja \textit{l} a lista original e \textit{l'} a lista resultante do processo de ordenação de \textit{l}. Dizemos que \textit{l'} está ordenada se
+
+\begin{gather*}
+   i\,)\;E(l')=E(l) \\
+   ii\,)\;\; a_i \leq a_{i+1}, \forall a_i \: \in E(l') \: , i\in [0,|l|) \\ 
+\end{gather*}  
+\\
+Ou seja, quando:
+\begin{enumerate}[i)]
+	\item todos os elementos da lista original estiverem presentes na lista ordenada;
+    \item quando todo elemento da lista ordenada for menor ou igual a seu sucessor.
+\end{enumerate}
+
+Tendo como base estas definições, começamos a pensar o que é necessário para que um algoritmo de ordenação de listas esteja correto. 
 
 \section{Prova}
 
