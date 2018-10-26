@@ -12,6 +12,8 @@
 \usepackage{amssymb}  % assumes amsmath package installed
 \usepackage{xcolor}
 \usepackage{enumerate}
+\usepackage{amsfonts}
+
 
 \title{\LARGE \bf
 O Princípio da Indução e suas Aplicações
@@ -23,11 +25,12 @@ O Princípio da Indução e suas Aplicações
         Vitor Ribeiro Custódio}
 
 \begin{document}
+
 \maketitle
 
 \begin{abstract}
 
-Neste trabalho mostraremos diversas utilizações do princípio de indução em Ciência da Computação. São apresentadas duas provas envolvendo indução matemática e estrutural, bem como o desenvolvimento de seu raciocínio.
+Neste trabalho mostraremos diversas utilizações do princípio de indução em Ciência da Computação. São apresentadas duas provas envolvendo indução matemática e estrutural, bem como o desenvolvimento de seu raciocínio.\par
 
 \end{abstract}
 
@@ -38,6 +41,36 @@ Indução é um princípio importante \textcolor{red}{[...]}
 \section{Desenvolvimento das provas}
 
 \subsection{Equivalência entre princípios de indução}
+
+
+ No primeiro problema proposto pela atividade, devemos apresentar a equivalência entre os princípios da indução matemática e da indução forte. \par \vspace{5mm}
+
+	Para provarmos a equivalência, precisamos:\vspace{5mm}
+\begin{enumerate}[i)]
+\item Provar que conseguimos obter os principios da indução forte pela indução fraca;
+\item Provar que conseguimos obter os principios da indução fraca pela indução forte;
+\end{enumerate}
+
+\vspace{5mm}Primeiro, precisamos definir indução matemática e indução forte
+\begin{itemize}
+\item Indução fraca\\ 
+	O princípio da indução nos permite provar propriedades sobre os números naturais $\mathbb{N}$={1,2,...}, e a partir de alguns exemplos.
+    Para provar que uma propriedade \textit{M} sobre os naturais é válida precisamos mostrar duas coisas:
+    
+	\begin{enumerate} [a)]	
+    \item \textbf{Base Indutiva}: mostrar \textit{$n_0$} que satizdaz a propriedade, isto é, provar \textit{M(\textit{$n_0$})};
+    \item \textbf{Passo Indutivo}: assumindo que um natural \textit{n} satisfaça a propriedade \textit{M}, precisamos provar que n+1 também satisfa a propriedade, isto é, precisamos construir uma prova de \textit{M(n)} $\rightarrow$ \textit{ M(n+1)};
+	\end{enumerate}
+    
+\item Indução Forte\\
+	A indução forte geralmente é utilizada quando não se pode demonstrar com facilidade a veracidade de uma propriedade utilizando a indução fraca.    
+    \begin{enumerate}[a)]
+    \item \textbf{Base Indutiva}: O princípio da \textbf{Base Indutiva} da indução forte é o mesmo da base fraca
+    \item \textbf{Passo Indutivo}: Ao invés de considerarmos verdadeiro \textit{M(n)} para provar \textit{ M(n+1)}, consideramos que $\forall$ k $\le$ n satisfazem a \textit{M(k)} e entao provamos \textit{M(n+1)}, ou seja, \textit{M(1)} $\wedge$ \textit{M(2)} $\wedge$ ... $\wedge$ \textit{M(n)} $\rightarrow$ \textit{ M(n+1)};
+    \end{enumerate}
+\end{itemize}
+
+Definidas as induções, podemos iniciar a construção da prova; 
 
 \subsection{Correção do algoritmo de ordenação por inserção}
 
