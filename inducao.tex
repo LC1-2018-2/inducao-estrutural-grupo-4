@@ -72,6 +72,22 @@ Indução é um princípio importante \textcolor{red}{[...]}
 
 Definidas as induções, podemos iniciar a construção da prova; 
 
+A prova da indução consiste em duas etapas, a base indutiva e o passo indutivo.
+Como a base indutiva é a mesma, sua prova é trivial.
+No caso do passo indutivo, teremos que provar que de indução fraca conseguimos chegar a indução forte e que da indução forte conseguimos chegar a indução fraca.
+
+\begin{enumerate}
+\item Neste item, provaremos I.Forte $\Rightarrow$ I.Fraca:
+	\\No \textbf{passo indutivo} da Inducao Forte, a partir de uma propriedade \textit{M}, assumimos que \textit{M(1)} $\wedge$ \textit{M(2)} $\wedge$ ... $\wedge$ \textit{M(n)} sao verdadeiros para entao obter \textit{M(n+1)}. 
+    Disso, podemos  \textit{M(n)}, que faz parte da hipótese da fraca e com isso obtemos que de \textit{M(n)} $\rightarrow$ \textit{M(n+1)}, logo encontramos o passo indutivo da inducao fraca.
+
+\item Neste item, provaremos que I.Fraca $\Rightarrow$ I.Forte 
+	\\	No \textbf{passo indutivo} da Indução Fraca, a partir de uma propriedade \textit{M}, assumimos que \textit{M(n)} seja verdadeiro para então chegar em \textit{M(n+1)}
+    \\	Sendo \textit{M(n)} verdadeiro, temos, por hipótese, \textit{M(n-1)} $\rightarrow$ \textit{M(n)}. Continuando o processo até que obtemos \textit{M($n_0$)} $\rightarrow$ \textit{M($n_0$ +1)}. Assim temos que \textit{M($n_0$)} $\wedge$ \textit{M($n_0$+1)} $\wedge$ ... $\wedge$ \textit{M(n)} geram o \textit{M(n+1)} verdadeiro.
+    Com isso, obtemos a indução forte a partir da fraca.
+\end{enumerate}
+
+
 \subsection{Correção do algoritmo de ordenação por inserção}
 
 No segundo problema proposto pela atividade, devemos provar a correção do \textit{insertion sort}, um algoritmo de ordenação de listas. A definição do algoritmo é explicitada a seguir:
