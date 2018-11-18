@@ -100,7 +100,7 @@ No segundo problema proposto pela atividade, devemos provar a correção do \tex
       InsertionSort(l) =
       \begin{cases}
           l, \hspace{11.2em}			 	      se \enspace l\,=\,[\,]\\
-          Insert(h, InsertionSorte(l'),\enspace se \enspace l\,=\,h\,::\,l'
+          Insert(h, InsertionSort(l'),\enspace se \enspace l\,=\,h\,::\,l'
       \end{cases}
   \end{equation}
   onde Insert é definido como
@@ -144,14 +144,61 @@ Ou seja, quando:
 
 Tendo como base estas definições, começamos a desenvolver. Inicialmente, sabemos que utilizaremos indução, pois, além de ser a proposta do problema, o que queremos provar precisa ser verdadeiro para todos os casos
 dentro de um conjunto infinito de possibilidades.
-
+	
 Para começarmos a indução, iremos separar em dois casos: o caso base e o caso indutivo. O caso base é necessário, pois a partir dele provamos que o algoritmo é válido para pelo menos um caso, depois disso podemos tentar provar para os casos seguintes.\\
 
 O caso base para o algoritmo \textit{insertion sort}, será para quando a lista estiver vazia, ou seja, quando não tiver nenhum elemento. Nesse caso, a lista tem tamanho zero e, segundo a definição do algoritmo, a saída será a própria lista vazia. Assim, satisfaz o item i da definição acima descrita, uma vez que o conjunto dos elementos das listas de entrada e saída são iguais, por ser um conjunto vazio. Esse caso é trivial, uma vez que, por ter nenhum elemento, a lista já está ordenada.
 
+Já no passo indutivo, temos necessariamente que considerar o funcionamento do \textit{Insertion Sort}. Sabemos que o caso em que não temos nenhum elemento já está ordenado, e conseguimos ver também que o caso em que temos apenas um elemento também é simples. Quando uma lista possui um elemento, ela também já está ordenada.
+
+A dificuldade surge quando começamos a trabalhar com dois ou mais elementos. Assim, destinamos nossa atenção às partes do \textit{Insertion Sort}, dentre elas, o próprio \textit{Insert}.
+No caso base, tendo uma lista vazia, o \textit{Insert} apenas adiciona o elemento à cabeça da lista. Esse caso já era esperado e não adiciona nenhum resultado à linha de raciocínio. Porém, quando a lista possui apenas um elemento, o \textit{Insert} só adiciona um novo elemento $x$ à cabeça da lista se $x$ for menor ou igual à cabeça já existente. Ou seja, uma vez que uma lista de tamanho 1 já está ordenada, o \textit{Insert} não altera a propriedade "estar-ordenada" da lista ao adicionar um elemento.
+
+Dessa forma, conseguindo provar que, sempre que uma lista já está ordenada, ao adicionar um novo elemento através do \textit{Insert}, a propriedade de ordenação da lista não é alterada, o \textit{Insertion Sort} estará correto.
+
+Assim, podemos separar em mais alguns casos de aplicação do \textit{Insertion Sort}. Quando a lista está vazia, já sabemos que está ordenada. Ao adicionar um elemento à uma lista vazia, também estará ordenada. Agora, se formos adicionar um elemento $x$ ao caso em que já temos uma cabeça $h$, podemos separar em dois casos:
+
+\begin{enumerate}[i)]
+	\item Quando $h \geq x$. Nesse cenário, considerando que a lista anterior já estava na ordem crescente (que é o caso quando temos apenas dois elementos), a lista irá se manter ordenada;
+    \item Quando $h < x$. Já nesta situação, o processo será reaplicado em $x$, porém tentando adicioná-lo numa lista menor que a original, em que não esteja contido $h$. No caso de dois elementos, essa lista menor será uma lista vazia e permitirá que seja feita a adição de $x$, só que dessa vez no final da lista resultante.
+\end{enumerate}
+
+Isso nos leva à dificuldade do \textit{Insert}: quando a adição é de um novo elemento não menor que a cabeça da lista original. 
+
+Pensemos agora do ponto de vista indutivo. 
+
+% Para o passo indutivo, consideramos o I(n), de tal forma que, para provarmos a validade do insertion sort, precisamos provar a validade de insertion, assim, dividindo em novos dois casos.
+% Similar ao caso da base indutiva do insertion sort, consideramos que n0 será uma lista vazia. Por definição, temos que n0, agora contendo um novo e único membro, estará ordenado, visto que possui apenas um membro. Assim, gerando uma lista ordenada que, por conseguinte, gera uma lista também ordenada no insertion sort.
+% No caso da lista não ser vazia, temos dois casos:
+% 	O novo elemento do insert é menor que a cabeça da lista.  Nesse caso, validade da ordenação é trivial, visto que não é necessário que a lista seja reordenada, apenas necessitando que seja inserido o novo elemento como nova cabeça da lista.
+% 	O novo elemento do insert não é menor que a cabeça da lista, ou seja, está em qualquer posição. Tal elemento será inserido em uma lista de n-1 elementos, de tal forma que, por meio da hipótese de indução, em I(n) um novo elemento estará corretamente inserido, assim, para I(n+1) também é possível dizer o mesmo.
+% Assim, como insert pode ser considerado como correto, insertion sort também pode ser considerado correto.
+
+
 \section{Prova}
 
 \subsection{Problema 1}
+
+Primeiramente, consideramos uma propriedade $P$ a qual podemos aplicar em $n$ números naturais, números naturais estes delimitados por um $n_0$, que é o menor número em que é possível aplicar a propriedade.
+
+A prova da equivalência da base indutiva das induções Forte e Fraca é trivial, visto que seguem o mesmo princípio: demonstrar que $P(n_0)$ é válido, de tal forma que podemos chegar a mesma conclusão usando qualquer um dos métodos de indução.
+
+No caso do passo indutivo, para atingirmos a equivalência, devemos mostrar que a partir da Indução Forte é possível chegar à Fraca e vice-versa.
+
+\textbf{Indução Forte $\implies$ Indução Fraca:}
+	Por meio do passo indutivo da Indução Forte, assumimos que para todo $k,\:n_0 \leq k \leq n,\:P(k)$ é verdadeiro, sendo assim, $P(n+1)$ é verdadeiro.
+	Dessa hipótese supomos $P(n+1)$ verdadeiro e que $P(k)$ será verdadeiro no domínio delimitado, de tal forma que é possível assumir $P(n)$ verdadeiro, assim, é viável afirmar que $P(n)$ implica em $P(n+1)$, $P(n) \implies P(n+1)$, o qual corresponde ao passo indutivo da Indução Fraca.
+	
+\textbf{Indução Fraca $\implies$ Indução Forte:}
+	Por meio do passo indutivo da Indução Fraca, assumimos que n aplicado em $P(n)$ é verdadeiro, para então provar $P(n+1)$ verdadeiro.
+	Seguindo tal hipótese, podemos entender que para $P(n)$ ser considerado verdadeiro, há um $n-1$ tal que $P(n-1)$ é também válido. Tal lógica é possível ser aplicada em $n-1$ e assim por diante, de tal forma que todo $k$, $n_0 \leq k \leq n$, é satisfatório para a propriedade $P$, tal que $P(k)$ é verdadeiro.
+	Assim, chegamos à conclusão que 
+\begin{equation*}
+  P(n_0) \wedge P(n_1) \wedge ... \wedge P(n-2) \wedge P(n-1) \wedge P(n) \implies P(n+1),
+\end{equation*}    
+    o qual corresponde ao passo indutivo da Indução Forte.
+
+Por fim, concluímos que Indução Forte e Fraca são equivalentes.
 
 \subsection{Problema 2}
 
@@ -161,7 +208,12 @@ Aplicando a indução estrutural no algoritmo \textit{Insertion Sort}, podemos s
 No primeiro caso, a solução é trivial. Por não ter nenhum elemento, a lista já está ordenada. O algoritmo, nessa situação, não altera a lista de nenhuma forma. Por isso, o algoritmo está correto para este caso.
 
 
-Já no segundo caso,
+% Já no segundo caso, quando a lista tem dois elementos, teremos dois casos para verificar. Para verificar ambos os casos, iremos pegar o último elemento da lista. Ou seja, para o primerio caso, numa lista de dois elementos, ao pegar o último elemento e ele for maior que o anterior, o algoritmo já está correto, pois satisfaz as necessidades do mesmo. Agora para o caso que o último elemento não é maior que o anterior. O algortimo irá executar a função de trocar os dois elementos, mantendo verdadeiro o algoritmo e garantindo a corretude.
+
+%Pedro
+
+
+
 \section{Conclusão}
 
 \end{document}
