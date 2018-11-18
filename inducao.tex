@@ -36,7 +36,9 @@ Neste trabalho mostraremos diversas utilizações do princípio de indução em 
 
 \section{Introdução}
 
-Neste documento será descrito o desenvolvimento de dois problemas matemáticos utilizando a indução matemática. Indução é um método de prova matemática usado para demonstrar a verdade de um número infinito de proposições. Isso é possível, utlizando uma base que seja verdade, uma vez que sabemos que a base é verdadeira provando que a formúla seja verdadeira para n + 1, podemos afirmar que a formúla é válida para qualquer número n. Utilizando este método iremos provar dois problemas. O primeiro será provar a equivalência entre os princípios da indução forte e da indução matemática. O segundo problema, iremos provar a corretudo do algoritmo insertion sorte, algoritmo este muito utlizado para ordenação de listas. Além disso, conseguimos avaliar as principais diferenças de uso e de estrutura na utilização  da indução forte, como foi demonstrado no problema 1.
+Neste documento será descrito o desenvolvimento de dois problemas matemáticos utilizando a indução matemática. Indução é um método de prova matemática usado para demonstrar a verdade de um número infinito de proposições dentro do conjunto dos naturais ou, no caso do segundo problema, dentro da estrutura de uma fórmula. A ideia por trás da indução é, através de casos base ou minimais que sabemos/provamos que são verdadeiros, provarmos, de forma recursiva, que a propriedade é válida para todo o conjunto infinito. 
+
+Utilizaremos este método para provar dois problemas. O primeiro será provar a equivalência entre os princípios da indução forte e da indução matemática. No segundo problema, iremos provar a corretude do algoritmo \textit{Insertion Sort}, muito utlizado para ordenação de listas. Além disso, iremos avaliar as principais diferenças de uso e de estrutura na utilização da indução forte, como será demonstrado no problema 1.
 
 \section{Desenvolvimento das provas}
 
@@ -90,6 +92,7 @@ No caso do passo indutivo, teremos que provar que de indução fraca conseguimos
 
 
 \subsection{Correção do algoritmo de ordenação por inserção}
+\label{sec:insertion}
 
 No segundo problema proposto pela atividade, devemos provar a correção do \textit{insertion sort}, um algoritmo de ordenação de listas. A definição do algoritmo é explicitada a seguir:
 
@@ -132,7 +135,7 @@ Logo, seja \textit{l} a lista original e \textit{l'} a lista resultante do proce
 \begin{gather*}
    i\,)\;E(l')=E(l) \\
    ii\,)\;\; a_i \leq a_{i+1}, \forall a_i \: \in E(l') \: , i\in [0,|l|) \\ 
-\end{gather*}  
+\end{gather*}
 \\
 Ou seja, quando:
 \begin{enumerate}[i)]
@@ -140,12 +143,12 @@ Ou seja, quando:
     \item quando todo elemento da lista ordenada for menor ou igual a seu sucessor.
 \end{enumerate}
 
-Tendo como base estas definições, começamos a pensar.
+Tendo como base estas definições, começamos a desenvolver. Inicialmente, sabemos que utilizaremos indução, pois, além de ser a proposta do problema, o que queremos provar precisa ser verdadeiro para todos os casos
+dentro de um conjunto infinito de possibilidades.
 
+Para começarmos a indução, iremos separar em dois casos: o caso base e o caso indutivo. O caso base é necessário, pois a partir dele provamos que o algoritmo é válido para pelo menos um caso, depois disso podemos tentar provar para os casos seguintes.\\
 
-Para começarmos a provar o problema iremos seprar em dois casos. O caso base, e o caso para n + 1. O caso base é necessário, pois a partir dele provamos que o algoritmo é válido para pelo menos um caso, depois disso podemos tentar provar para os casos seguintes. 
-
-O caso base para o algoritmo insertion sort, será para quando a lista estiver vazia, ou seja, quando não tiver nenhuma elemento. Para esse caso base a lista de tamanho zero, necessariamente já está ordenada pelo algoritmo. Ou seja, provando que o algoritmo está correto para o caso base.
+O caso base para o algoritmo \textit{insertion sort}, será para quando a lista estiver vazia, ou seja, quando não tiver nenhum elemento. Nesse caso, a lista tem tamanho zero e, segundo a definição do algoritmo, a saída será a própria lista vazia. Assim, satisfaz o item i da definição acima descrita, uma vez que o conjunto dos elementos das listas de entrada e saída são iguais, por ser um conjunto vazio. Esse caso é trivial, uma vez que, por ter nenhum elemento, a lista já está ordenada.
 
 \section{Prova}
 
@@ -153,6 +156,13 @@ O caso base para o algoritmo insertion sort, será para quando a lista estiver v
 
 \subsection{Problema 2}
 
+Utilizando as definições da seção \ref{sec:insertion}, podemos sintetizar a prova da seguinte forma.
+Aplicando a indução estrutural no algoritmo \textit{Insertion Sort}, podemos separar dois casos distintos de listas: o caso base, no qual a lista é vazia, e o caso indutivo, em que a lista é composta por pelo menos um elemento.
+
+No primeiro caso, a solução é trivial. Por não ter nenhum elemento, a lista já está ordenada. O algoritmo, nessa situação, não altera a lista de nenhuma forma. Por isso, o algoritmo está correto para este caso.
+
+
+Já no segundo caso,
 \section{Conclusão}
 
 \end{document}
