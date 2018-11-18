@@ -36,7 +36,7 @@ Neste trabalho mostraremos diversas utilizações do princípio de indução em 
 
 \section{Introdução}
 
-Indução é um princípio importante \textcolor{red}{[...]}
+Neste documento será descrito o desenvolvimento de dois problemas matemáticos utilizando a indução matemática. Indução é um método de prova matemática usado para demonstrar a verdade de um número infinito de proposições. Isso é possível, utlizando uma base que seja verdade, uma vez que sabemos que a base é verdadeira provando que a formúla seja verdadeira para n + 1, podemos afirmar que a formúla é válida para qualquer número n. Utilizando este método iremos provar dois problemas. O primeiro será provar a equivalência entre os princípios da indução forte e da indução matemática. O segundo problema, iremos provar a corretudo do algoritmo insertion sorte, algoritmo este muito utlizado para ordenação de listas. Além disso, conseguimos avaliar as principais diferenças de uso e de estrutura na utilização  da indução forte, como foi demonstrado no problema 1.
 
 \section{Desenvolvimento das provas}
 
@@ -139,7 +139,12 @@ Ou seja, quando:
     \item quando todo elemento da lista ordenada for menor ou igual a seu sucessor.
 \end{enumerate}
 
-Tendo como base estas definições, começamos a pensar
+Tendo como base estas definições, começamos a pensar.
+
+
+Para começarmos a provar o problema iremos seprar em dois casos. O caso base, e o caso para n + 1. O caso base é necessário, pois a partir dele provamos que o algoritmo é válido para pelo menos um caso, depois disso podemos tentar provar para os casos seguintes. 
+
+O caso base para o algoritmo insertion sort, será para quando a lista estiver vazia, ou seja, quando não tiver nenhuma elemento. Para esse caso base a lista de tamanho zero, necessariamente já está ordenada pelo algoritmo. Ou seja, provando que o algoritmo está correto para o caso base.
 
 \section{Prova}
 
