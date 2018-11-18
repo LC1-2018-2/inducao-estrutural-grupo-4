@@ -166,7 +166,15 @@ Assim, podemos separar em mais alguns casos de aplicação do \textit{Insertion 
 
 Isso nos leva à dificuldade do \textit{Insert}: quando a adição é de um novo elemento não menor que a cabeça da lista original. 
 
-Pensemos agora do ponto de vista indutivo. 
+Pensemos agora do ponto de vista indutivo. Vamos considerar que $P(n)$ é "o \textit{Insert} adiciona corretamente um elemento numa lista de $n$ elementos". Então, $P(n)$ é nossa hipótese de indução e assumimos que está correta. Também sabemos que $P(0)$ e $P(1)$ são verdadeiros. Então vamos pensar a respeito de $P(n+1)$, que é uma lista de tamanho $n$ com a adição de um elemento.
+
+Como $P(n)$ é verdadeiro por hipótese de indução, então uma lista de tamanho $n$ pode ser ordenada corretamente pelo algoritmo \textit{Insertion Sort}. Então iremos adicionar um elemento $x$ a essa lista. Conforme os casos acima comentados, temos duas situações.
+
+Na primeira, onde $h \geq x$, como a lista de tamanho $n$ anterior já estava ordenada, então, segundo o \textit{Insert}, o $x$ será adicionado no início da lista e esta estará ordenada.
+
+Já na segunda situação, o Insert não irá adicionar o $x$ no início da lista, e, recursivamente, vai tentar adicionar à cauda restante, ou seja à lista menos a cabeça $h$. Porém, pela hipótese de indução $P(n)$, em que uma lista de tamanho $n$ consegue ser ordenada, a lista também conseguirá ser ordenada, independente de qual seja a posição em que seja inserido o $x$ e quantas recursões sejam necessárias para que isso aconteça.
+
+Logo, conseguimos cobrir todos os casos de inserção do \textit{Insert}. Portanto, uma vez que o \textit{Insert} está correto, o algoritmo \textit{InsertionSort} também está.
 
 % Para o passo indutivo, consideramos o I(n), de tal forma que, para provarmos a validade do insertion sort, precisamos provar a validade de insertion, assim, dividindo em novos dois casos.
 % Similar ao caso da base indutiva do insertion sort, consideramos que n0 será uma lista vazia. Por definição, temos que n0, agora contendo um novo e único membro, estará ordenado, visto que possui apenas um membro. Assim, gerando uma lista ordenada que, por conseguinte, gera uma lista também ordenada no insertion sort.
@@ -208,13 +216,20 @@ Aplicando a indução estrutural no algoritmo \textit{Insertion Sort}, podemos s
 
 No primeiro caso, a solução é trivial. Por não ter nenhum elemento, a lista já está ordenada. O algoritmo, nessa situação, não altera a lista de nenhuma forma. Por isso, o algoritmo está correto para este caso.
 
+No segundo caso, vamos considerar uma proposição $P(n)$: "o algoritmo \textit{Insertion Sort} está correto para uma lista de $n$ elementos". Ou seja, que para uma lista com $n$ elementos, o algoritmo é capaz de ordená-la corretamente. Consideremos $P(n)$ nossa hipótese de indução e, consequentemente, verdadeira.
+
+Como o algoritmo \textit{Insertion Sort} é correto para uma lista de $n$ elementos, queremos provar que também é correto para uma lista de $n+1$ elementos, ou seja, que $P(n+1)$ é verdadeira.
+
+Adicionando, então, um elemento a uma lista de $n$ elementos, temos duas situações possíveis, ambas abordadas na definição de \textit{Insertion Sort} e \textit{Insert}:
+\begin{enumerate}
+	\item $h \geq x$: Nesse caso, a cabeça da lista original é maior que o elemento $x$ que queremos adicionar. Como a lista original já pode ser ordenada pelo algoritmo, como diz a hipótese de indução, então $x$ não comprometerá a ordenação da lista. Logo, o \textit{Insertion Sort} é correto neste caso;
+    \item $h < x$: Nesta situação, a cabeça da lista original é menor que o elemento $x$. Então, pela definição de \textit{Insert}, $x$ não pode ser adicionado ao início da lista. Uma chamada recursiva será feita, e o \textit{Insert} tentará adicionar $x$ na cauda da lista original, ou seja, esta sem sua cabeça. Porém, essa nova lista composta de $x$ e a lista original sem a cabeça possui um total de $n$ elementos. E, por hipótese de indução, $P(n)$, o algoritmo é correto. Então a lista é ordenada.
+\end{enumerate}
 
 % Já no segundo caso, quando a lista tem dois elementos, teremos dois casos para verificar. Para verificar ambos os casos, iremos pegar o último elemento da lista. Ou seja, para o primerio caso, numa lista de dois elementos, ao pegar o último elemento e ele for maior que o anterior, o algoritmo já está correto, pois satisfaz as necessidades do mesmo. Agora para o caso que o último elemento não é maior que o anterior. O algortimo irá executar a função de trocar os dois elementos, mantendo verdadeiro o algoritmo e garantindo a corretude.
 
-%Pedro
-
-
-
 \section{Conclusão}
+
+Diante dos dois problemas apresentados, foram realizadas aplicações diferentes do mesmo conceito de Indução como solicitado pela especificação da atividade. O desenvolvimento desta permitiu aos integrantes do grupo se familiarizarem mais com a metodologia, o que permitiu, do nosso ponto de vista, uma resolução correta das questões.
 
 \end{document}
