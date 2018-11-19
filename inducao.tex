@@ -38,16 +38,15 @@ Neste trabalho mostraremos diversas utilizações do princípio de indução em 
 
 Neste documento será descrito o desenvolvimento de dois problemas matemáticos utilizando a indução matemática. Indução é um método de prova matemática usado para demonstrar a verdade de um número infinito de proposições dentro do conjunto dos naturais ou, no caso do segundo problema, dentro da estrutura de uma fórmula. A ideia por trás da indução é, através de casos base ou minimais que sabemos/provamos que são verdadeiros, provarmos, de forma recursiva, que a propriedade é válida para todo o conjunto infinito. 
 
-Utilizaremos este método para provar dois problemas. O primeiro será provar a equivalência entre os princípios da indução forte e da indução matemática. No segundo problema, iremos provar a corretude do algoritmo \textit{Insertion Sort}, muito utlizado para ordenação de listas. Além disso, iremos avaliar as principais diferenças de uso e de estrutura na utilização da indução forte, como será demonstrado no problema 1.
+Utilizaremos este método para provar dois problemas. O primeiro será provar a equivalência entre os princípios da indução forte e da indução matemática. No segundo problema, iremos provar a corretude do algoritmo \textit{Insertion Sort}, muito utilizado para ordenação de listas. Além disso, iremos avaliar as principais diferenças de uso e de estrutura na utilização da indução forte, como será demonstrado no problema 1.
 
 \section{Desenvolvimento das provas}
 
 \subsection{Equivalência entre princípios de indução}
 
 
- No primeiro problema proposto pela atividade, devemos apresentar a equivalência entre os princípios da indução matemática e da indução forte. \par \vspace{5mm}
-
-	Para provarmos a equivalência, precisamos:\vspace{5mm}
+ No primeiro problema proposto pela atividade, devemos apresentar a equivalência entre os princípios da indução matemática e da indução forte.
+	Para provarmos a equivalência, precisamos:
 \begin{enumerate}[i)]
 \item Provar que conseguimos obter os principios da indução forte pela indução fraca;
 \item Provar que conseguimos obter os principios da indução fraca pela indução forte;
@@ -60,8 +59,8 @@ Utilizaremos este método para provar dois problemas. O primeiro será provar a 
     Para provar que uma propriedade \textit{M} sobre os naturais é válida precisamos mostrar duas coisas:
     
 	\begin{enumerate} [a)]	
-    \item \textbf{Base Indutiva}: mostrar \textit{$n_0$} que satizdaz a propriedade, isto é, provar \textit{M(\textit{$n_0$})};
-    \item \textbf{Passo Indutivo}: assumindo que um natural \textit{n} satisfaça a propriedade \textit{M}, precisamos provar que n+1 também satisfa a propriedade, isto é, precisamos construir uma prova de \textit{M(n)} $\rightarrow$ \textit{ M(n+1)};
+    \item \textbf{Base Indutiva}: mostrar \textit{$n_0$} que satisfaz a propriedade, isto é, provar \textit{M(\textit{$n_0$})};
+    \item \textbf{Passo Indutivo}: assumindo que um natural \textit{n} satisfaça a propriedade \textit{M}, precisamos provar que n+1 também satisfaz a propriedade, isto é, precisamos construir uma prova de \textit{M(n)} $\rightarrow$ \textit{ M(n+1)};
 	\end{enumerate}
     
 \item Indução Forte\\
@@ -81,11 +80,11 @@ No caso do passo indutivo, teremos que provar que de indução fraca conseguimos
 \begin{enumerate}
 \item Neste item, provaremos I.Forte $\Rightarrow$ I.Fraca:
 
-	\\No \textbf{passo indutivo} da Indução Forte, a partir de uma propriedade \textit{M}, assumimos que \textit{M(1)} $\wedge$ \textit{M(2)} $\wedge$ ... $\wedge$ \textit{M(n)} sao verdadeiros para entao obter \textit{M(n+1)}. 
-    Disso, podemos  \textit{M(n)}, que faz parte da hipótese da fraca e com isso obtemos que de \textit{M(n)} $\rightarrow$ \textit{M(n+1)}, logo encontramos o passo indutivo da inducao fraca.
+	\\No \textbf{passo indutivo} da Indução Forte, a partir de uma propriedade \textit{M}, assumimos que \textit{M(1)} $\wedge$ \textit{M(2)} $\wedge$ ... $\wedge$ \textit{M(n)} são verdadeiros para então obter \textit{M(n+1)}. 
+    Disso, temos  \textit{M(n)} verdadeiro, que faz parte da hipótese da fraca e com isso obtemos que de \textit{M(n)} $\rightarrow$ \textit{M(n+1)}, logo encontramos o passo indutivo da indução fraca.
 
 \item Neste item, provaremos que I.Fraca $\Rightarrow$ I.Forte 
-	\\	No \textbf{passo indutivo} da Indução Fraca, a partir de uma propriedade \textit{M}, assumimos que \textit{M(n)} seja verdadeiro para então chegar em \textit{M(n+1)}
+	\\	No \textbf{passo indutivo} da Indução Fraca, a partir de uma propriedade \textit{M}, assumimos que \textit{M(n)} é verdadeiro para então chegar em \textit{M(n+1)}
     \\	Sendo \textit{M(n)} verdadeiro, temos, por hipótese, \textit{M(n-1)} $\rightarrow$ \textit{M(n)}. Continuando o processo até que obtemos \textit{M($n_0$)} $\rightarrow$ \textit{M($n_0$ +1)}. Assim temos que \textit{M($n_0$)} $\wedge$ \textit{M($n_0$+1)} $\wedge$ ... $\wedge$ \textit{M(n)} geram o \textit{M(n+1)} verdadeiro.
     Com isso, obtemos a indução forte a partir da fraca.
 \end{enumerate}
